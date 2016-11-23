@@ -35,7 +35,7 @@ $("#access").on("click", function(){
             // alert(myLoc);
 
         
-        var apiCoords= "api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+        var apiCoords= "https://api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
           $.getJSON("apiCoords", function(wd){
         
@@ -56,7 +56,7 @@ $("#access").on("click", function(){
 
 var city = $("#search-inpt").val();	
 
-var api="api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+var api="https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
 $.getJSON(api, function(data){
 
@@ -93,7 +93,7 @@ var icon = data.weather[0].icon;
 });
 
 
-var apiForecast = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&mode=xml&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+var apiForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&mode=xml&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
 
 $.ajax({
