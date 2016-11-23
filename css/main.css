@@ -108,6 +108,7 @@ body{
  	animation-duration:700MS;
     animation-fill-mode: both;
     animation-iteration-count: infinite;
+    fill: #8B3D3D;
 
 
 }
@@ -118,6 +119,7 @@ body{
  	animation-duration: 800ms;
     animation-fill-mode: both;
     animation-iteration-count: infinite;
+    fill: #8B3D3D;
 
 
 }
