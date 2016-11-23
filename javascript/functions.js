@@ -34,12 +34,44 @@ $("#access").on("click", function(){
 
             // alert(myLoc);
 
-        
-        var apiCoords= "http://api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+        // var city = $("#search-inpt").val(); 
+         
+        var apiCords= "http://api.openweathermap.org/data/2.5/weather?lat=" +myLoc[0]+ "&lon=" +myLoc[1]+ "&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
-          $.getJSON("apiCoords", function(wd){
+          $.getJSON(apiCords, function(wd){
         
-           alert(wd);
+           // alert(wd.name);
+
+    $(".register").slideUp();
+    
+    $(".city").html(wd.name+", "+wd.sys.country);
+
+    var icon = wd.weather[0].icon;
+
+    $("#clouds").attr("src","../images/icons/"+icon+".svg");
+
+    $(".max-temp").html(wd.main.temp_max+" °C");
+
+    $(".min-temp").html(wd.main.temp_min+" °C");
+
+
+    setTimeout(function(){
+
+        $(".weather-box").fadeIn().css("display","flex");
+
+        $(".register-bgcolor").toggleClass("main-bgcolor")
+
+        $(".favourites-box").css("visibility","visible");
+
+        $("#logo-img").attr("src","../images/logo2.svg");
+
+        $(".center-wrapp-footer").css("visibility","visible");
+
+
+    },500);
+
+
+
 
      });   
 
@@ -56,7 +88,7 @@ $("#access").on("click", function(){
 
 var city = $("#search-inpt").val();	
 
-var api="http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+var api="http://api.openweathermap.org/data/2.5/weather?q=" +city+ "&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
 $.getJSON(api, function(data){
 
