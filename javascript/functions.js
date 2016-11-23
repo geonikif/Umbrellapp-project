@@ -4,7 +4,43 @@ $(function() {
 
   getData();
 
+  // autoSearch();
+
+
+
 });
+
+
+// function autoSearch(){
+
+// // var key = API_KEY;
+
+// // var googleApiKey = "AIzaSyA-e9dYICVb1xm7zSM5uLEpUlYemugiMiA";
+
+
+
+// $("#search-inpt").autocomplete({
+
+//     source:function(){
+
+//         alert("yo");
+
+//     },
+
+//     select:function(){
+
+//     }
+
+
+
+
+// });
+
+// };
+
+
+
+
 
 
 function toggleMenu(){
@@ -18,35 +54,67 @@ function toggleMenu(){
 		
 	});
 
-}
+};
 
 
 function getData(){
 
 
-// $("#access").on("click", function(){
+$("#access").on("click", function(){
 
-//         var myLoc;
+        var myLoc;
 
-//         $.getJSON('http://ipinfo.io', function(data){
+        $.getJSON('http://ipinfo.io', function(data){
 
-//             myLoc=data.loc.split(",");
+            myLoc=data.loc.split(",");
 
-//             // alert(myLoc);
+            // alert(myLoc);
 
+        // var city = $("#search-inpt").val(); 
+
+        var apiCords= "http://api.openweathermap.org/data/2.5/weather?lat=" +myLoc[0]+ "&lon=" +myLoc[1]+ "&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+
+          $.getJSON(apiCords, function(wd){
         
-//         var apiCoords= "http://api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+           // alert(wd.name);
 
-//           $.getJSON("apiCoords", function(wd){
-        
-//            alert(wd);
+    $(".register").slideUp();
+    
+    $(".city").html(wd.name+", "+wd.sys.country);
 
-//      });   
+    var icon = wd.weather[0].icon;
+
+    $("#clouds").attr("src","../images/icons/"+icon+".svg");
+
+    $(".max-temp").html(wd.main.temp_max+" °C");
+
+    $(".min-temp").html(wd.main.temp_min+" °C");
 
 
-// });
+    setTimeout(function(){
 
-// });
+        $(".weather-box").fadeIn().css("display","flex");
+
+        $(".register-bgcolor").toggleClass("main-bgcolor")
+
+        $(".favourites-box").css("visibility","visible");
+
+        $("#logo-img").attr("src","../images/logo2.svg");
+
+        $(".center-wrapp-footer").css("visibility","visible");
+
+
+    },500);
+
+
+
+
+     });   
+
+
+});
+
+});
 
 
 
@@ -56,7 +124,7 @@ function getData(){
 
 var city = $("#search-inpt").val();	
 
-var api="https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+var api="http://api.openweathermap.org/data/2.5/weather?q=" +city+ "&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
 $.getJSON(api, function(data){
 
@@ -93,7 +161,7 @@ var icon = data.weather[0].icon;
 });
 
 
-var apiForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&mode=xml&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+var apiForecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&mode=xml&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
 
 $.ajax({
