@@ -24,29 +24,29 @@ function toggleMenu(){
 function getData(){
 
 
-$("#access").on("click", function(){
+// $("#access").on("click", function(){
 
-        var myLoc;
+//         var myLoc;
 
-        $.getJSON('http://ipinfo.io', function(data){
+//         $.getJSON('http://ipinfo.io', function(data){
 
-            myLoc=data.loc.split(",");
+//             myLoc=data.loc.split(",");
 
-            // alert(myLoc);
+//             // alert(myLoc);
 
         
-        var apiCoords= "http://api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
+//         var apiCoords= "http://api.openweathermap.org/data/2.5/weather?lat=37.98&lon=23.72&APPID=eaf69a1d8aef49e96abdc8a9b590ba64&units=metric";
 
-          $.getJSON("apiCoords", function(wd){
+//           $.getJSON("apiCoords", function(wd){
         
-           alert(wd);
+//            alert(wd);
 
-     });   
+//      });   
 
 
-});
+// });
 
-});
+// });
 
 
 
