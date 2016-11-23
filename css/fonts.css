@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "biko";
+    font-style: normal;
+    src: url("../fonts/biko/Biko_Regular.otf");
+}
+
+@font-face {
+    font-family: "Biko_Light-Restricted";
+    src: url("../fonts/biko/Biko_Light-Restricted.otf");
+}
